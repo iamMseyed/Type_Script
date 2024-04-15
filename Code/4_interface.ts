@@ -1,35 +1,38 @@
-interface Iproduct{
-    Name:string;
-    Price:number;
-    Qty:number;
-    Total():number;
-    Print():void;}
-
-abstract class ProductTemp implements Iproduct{
-    public Name: string;
-    public Price: number;
-    public Qty: number;
-    public Total(): number {
-        return this.Qty*this.Price;
-    }
-    abstract public Print():void;
+interface IES4{
+    Operator:String;
+    Optional?:Number
 }
 
-class ProductComponent extends ProductTemp{
-    Name="Device one";
-    Price=345.3;
-    Qty=4;
-    Total(){
-        return this.Qty * this.Price;
-    }
-    Print() {
-        console.log(`
-            Name: ${this.Name}
-            Price: ${this.Price}
-            Qty: ${this.Qty}
-            Total: ${this.Total()}
-        `)
-    }
+interface IES5 extends IES4{ //extending this interface from IES4
+    RestParameter:String
 }
-let ob = new ProductComponent();
-ob.Print();
+
+interface IES6 extends IES5,IES4{ 
+    /*extending this interface from IES5 and IES4. 
+    IES5 itself is extending IES4, and this won't throw any error */
+    MapDatatype:String
+}
+
+let javaScriptLegacy:IES5={
+    RestParameter: "Allows multiple Values",
+    Operator:"Any Operator",
+    Optional:50
+}
+
+let javaScriptModern:IES6={
+    Operator:"Exponent Operator",
+    RestParameter:"Allows multiple Values",
+    MapDatatype: "Key Value pair",
+    // Optional:30 //no need to constructor as is optional part (?)
+}
+
+console.log(`
+    JSL RestParameter:${javaScriptLegacy.RestParameter}
+    JSL Operator: ${javaScriptLegacy.Operator}
+    JSL Optional Number: ${javaScriptLegacy.Optional}
+`);
+console.log(`
+    JSM MapDatatype:${javaScriptModern.MapDatatype}
+    JSM Operator: ${javaScriptModern.Operator}
+    JSP RestParameter: ${javaScriptModern.RestParameter}
+    `);

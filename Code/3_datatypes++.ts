@@ -1,4 +1,5 @@
 //NUMBER TYPE:
+
 //primitive type [fixed range]
 var signedInt:number = -45;
 var unsignedInt:number = 45;
@@ -15,6 +16,7 @@ var exponent:number= 2e3; //2*((10)^3);
 
 
 //STRING TYPE:
+
 var s1:String = 'String 1';
 var s2:String = "String 2";
 var s3:String = "Hello " + s2 + " how are you?";
@@ -29,6 +31,7 @@ if(mobile.match(/ \+ \(44\) \([0-9]{2}\) \s [0-9]{4} \s [0-9]{4} /)){
 
 
 //BOOLEAN TYPE
+
 var isSet:boolean = true;
 if(isSet){ //can't check isSet==1, as 1 is true in js
     console.log(`${isSet} is true`);
@@ -60,6 +63,7 @@ console.log(str); //undefined
 //Non-Primitive type
 
 //Array Type : used to reduce overhead and complexity
+
 var arr1:number[]=[1,2,3,4,5];//number array
 //var arr2:number[]=[2,3,4,'a'];//error
 var arrAny:any[] = [1,4,'a',`String`]; //should be any type
