@@ -114,6 +114,12 @@ var BaseClassWithArgNoArg = /** @class */ (function () {
     } //same message if no arg or even args con is called
     return BaseClassWithArgNoArg;
 }());
+var MiddleClass = /** @class */ (function () {
+    function MiddleClass() {
+        document.write('hello from middle!');
+    }
+    return MiddleClass;
+}());
 var DerivedClassWithArgNoArg = /** @class */ (function (_super) {
     __extends(DerivedClassWithArgNoArg, _super);
     function DerivedClassWithArgNoArg(firstNameDerived, lastNameDerived) {
@@ -128,4 +134,6 @@ var DerivedClassWithArgNoArg = /** @class */ (function (_super) {
     return DerivedClassWithArgNoArg;
 }(BaseClassWithArgNoArg));
 var derivedClassObjWithNoParam = new DerivedClassWithArgNoArg();
+/*derived class obj, so derived con will be called, which itself calls (see code) no arg base con and arg base con, and its own con with no arg*/
 var derivedClassObjWithParam = new DerivedClassWithArgNoArg('trayim naav', 'courim naav');
+/* Again, derived con with arg called, which itself calls (see code) base no arg and base with arg con, and derived with args*/

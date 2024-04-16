@@ -36,3 +36,49 @@ console.log(`
     JSM Operator: ${javaScriptModern.Operator}
     JSP RestParameter: ${javaScriptModern.RestParameter}
     `);
+
+
+interface IProduct{ //don't have access modifiers and these need to be implemeneted in implemented class
+    Name:string,
+    Price:number,
+    Qty: number,
+    Total():number,
+    Print():void
+}
+
+// class ProductClass implements IProduct{  //if we implement all methods of interface here
+abstract class ProductClass implements IProduct{ //if we don't implement all properties and methods of interface
+    public Name: string;
+    public Price: number;
+    public Qty: number;
+    Total(): number {
+            return this.Price * this.Qty;
+    }
+    // Print(): void;
+
+    /* We need to implement all the methods of interface in implementation class, now if we don't
+    tsc will throw error, if we don't for that we need to make this method abstract, and the class
+    also*/
+
+    abstract Print():void;
+}
+
+class Implemeneted extends ProductClass{ //all other information is hidden //abstraction concept
+    Name='Nokia 6600';
+    Price= 7800;
+    Qty=10;
+    Total(): number {
+        return this.Price * this.Qty;   
+    }
+    Print(): void {
+        document.write(` <h2>=========Product details=======</h2>
+            <h3>
+                Name: ${this.Name} </br> Price: ${this.Price} </br> Qty: ${this.Qty}
+                </br> Total: ${this.Total()}$
+            </h3>
+        `);
+    }
+}
+
+let implObj = new Implemeneted();
+implObj.Print();
