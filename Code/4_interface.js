@@ -65,8 +65,61 @@ var DatabaseConnection = /** @class */ (function () {
     return DatabaseConnection;
 }());
 var oracle = new DatabaseConnection();
-oracle.Connect({ driver: 'odbc', username: 'abc', password: 'pqr', database: 'oracleDB' });
+oracle.Connect({
+    driver: 'odbc',
+    username: 'abc',
+    password: 'pqr',
+    database: 'oracleDB'
+});
 var mysql = new DatabaseConnection();
-mysql.Connect({ host: 'anyHost', user: 'mno', password: 'pqr', database: 'mysqlDB' });
+mysql.Connect({
+    host: 'anyHost',
+    user: 'mno',
+    password: 'pqr',
+    database: 'mysqlDB'
+});
 var mongoDB = new DatabaseConnection();
-mongoDB.Connect({ url: 'any URL' });
+mongoDB.Connect({
+    url: 'any URL'
+});
+var DataService = /** @class */ (function () {
+    function DataService() {
+    }
+    DataService.prototype.getData = function (data) {
+        return data;
+    };
+    return DataService;
+}());
+var dataServiceObj = new DataService();
+var iProd = dataServiceObj.getData({ Name: 'hello', Price: 1200, Qty: 12 });
+var iProds = dataServiceObj.getData([
+    {
+        Name: 'name1', Price: 1200, Qty: 15
+    },
+    {
+        Name: 'name2', Price: 1030, Qty: 123
+    },
+    {
+        Name: 'name3', Price: 100, Qty: 123
+    }
+]);
+var emp = dataServiceObj.getData({ Name: 'EmpName', Salary: 12000, Designation: 'Full Stack Developer' });
+document.write("====Product====</br>");
+for (var pro in iProd)
+    document.write("Key: ".concat(pro, " - Val: ").concat(iProd[pro], "</br>"));
+document.write('</br>===Products===</br>');
+document.write('Via forEach():');
+iProds.forEach(function (item, index) {
+    document.write("</br>Product ".concat(index + 1, ":"));
+    document.write("Name: ".concat(item.Name));
+    document.write("Price: ".concat(item.Price));
+    document.write("Qty: ".concat(item.Qty));
+});
+document.write('</br></br>Via for loop:');
+for (var i = 0; i < iProds.length; i++) {
+    var item = iProds[i];
+    document.write("</br>Product ".concat(i + 1, ":"));
+    document.write("\nName: ".concat(item.Name));
+    document.write("\nPrice: ".concat(item.Price));
+    document.write("\nQty: ".concat(item.Qty));
+}

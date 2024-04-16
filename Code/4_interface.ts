@@ -83,7 +83,7 @@ class Implemeneted extends ProductClass{ //all other information is hidden //abs
 let implObj = new Implemeneted();
 implObj.Print();
 
-
+//interface and implementation
 interface OracleInterface{
     driver:string;
     username:string;
@@ -111,12 +111,89 @@ class DatabaseConnection{
 }
 
 let oracle =  new DatabaseConnection();
-oracle.Connect<OracleInterface>({driver:'odbc',username:'abc',password:'pqr',database:'oracleDB'});
+oracle.Connect<OracleInterface>(
+    {
+        driver:'odbc',
+        username:'abc',
+        password:'pqr',
+        database:'oracleDB'
+    }
+);
 
 
 let mysql = new DatabaseConnection();
-mysql.Connect<MySQLInterface>({host:'anyHost',user:'mno',password:'pqr',database:'mysqlDB'});
+mysql.Connect<MySQLInterface>(
+    {
+        host:'anyHost',
+        user:'mno',
+        password:'pqr',
+        database:'mysqlDB'
+    }
+);
 
 
 let mongoDB = new DatabaseConnection();
-mongoDB.Connect<MongoDBInterface>({url:'any URL'});
+mongoDB.Connect<MongoDBInterface>(
+    {
+        url:'any URL'
+    }
+);
+
+
+interface IPro{
+    Name:string;
+    Price:number;
+    Qty:number;
+}
+
+interface Employee{
+    Name:string;
+    Salary:number;
+    Designation:string;
+}
+
+class DataService{
+    public getData<T>(data:T):T{
+        return data;
+    }
+}
+
+let dataServiceObj = new DataService();
+let iProd = dataServiceObj.getData<IPro>({Name:'hello',Price:1200,Qty:12});
+let iProds = dataServiceObj.getData<IPro[]>(
+    [
+        {
+            Name:'name1',Price:1200,Qty:15
+        },
+        {
+            Name:'name2',Price:1030,Qty:123
+        },
+        {
+            Name:'name3',Price:100,Qty:123
+        }
+    ]
+);
+let emp= dataServiceObj.getData<Employee>({Name:'EmpName',Salary:12000,Designation:'Full Stack Developer'});
+
+document.write(`====Product====</br>`);
+for(var pro in iProd )
+    document.write(`Key: ${pro} - Val: ${iProd[pro]}</br>`);
+
+document.write('</br>===Products===</br>');
+
+document.write('Via forEach():');
+iProds.forEach((item, index) => {
+    document.write(`</br>Product ${index + 1}:`);
+    document.write(`Name: ${item.Name}`);
+    document.write(`Price: ${item.Price}`);
+    document.write(`Qty: ${item.Qty}`);
+});
+
+document.write('</br></br>Via for loop:');
+for (let i = 0; i < iProds.length; i++) {
+    const item = iProds[i];
+    document.write(`</br>Product ${i + 1}:`);
+    document.write(`\nName: ${item.Name}`);
+    document.write(`\nPrice: ${item.Price}`);
+    document.write(`\nQty: ${item.Qty}`);
+}
