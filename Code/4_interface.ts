@@ -82,3 +82,41 @@ class Implemeneted extends ProductClass{ //all other information is hidden //abs
 
 let implObj = new Implemeneted();
 implObj.Print();
+
+
+interface OracleInterface{
+    driver:string;
+    username:string;
+    password:string;
+    database:string;
+}
+
+interface MySQLInterface{
+    host:string;
+    user:string;
+    password:string;
+    database:string;
+}
+
+interface MongoDBInterface{
+    url:string;
+}
+
+class DatabaseConnection{
+    public Connect<T>(connectionString:T):void{
+        document.write('<h2> ===== Connection Details ===== </h2>');
+        for(var property in connectionString )
+            document.write(`<h4>Property : ${property}, Value: ${connectionString[property]}</br></h4>`);
+    }
+}
+
+let oracle =  new DatabaseConnection();
+oracle.Connect<OracleInterface>({driver:'odbc',username:'abc',password:'pqr',database:'oracleDB'});
+
+
+let mysql = new DatabaseConnection();
+mysql.Connect<MySQLInterface>({host:'anyHost',user:'mno',password:'pqr',database:'mysqlDB'});
+
+
+let mongoDB = new DatabaseConnection();
+mongoDB.Connect<MongoDBInterface>({url:'any URL'});

@@ -54,3 +54,19 @@ var Implemeneted = /** @class */ (function (_super) {
 }(ProductClass));
 var implObj = new Implemeneted();
 implObj.Print();
+var DatabaseConnection = /** @class */ (function () {
+    function DatabaseConnection() {
+    }
+    DatabaseConnection.prototype.Connect = function (connectionString) {
+        document.write('<h2> ===== Connection Details ===== </h2>');
+        for (var property in connectionString)
+            document.write("<h4>Property : ".concat(property, ", Value: ").concat(connectionString[property], "</br></h4>"));
+    };
+    return DatabaseConnection;
+}());
+var oracle = new DatabaseConnection();
+oracle.Connect({ driver: 'odbc', username: 'abc', password: 'pqr', database: 'oracleDB' });
+var mysql = new DatabaseConnection();
+mysql.Connect({ host: 'anyHost', user: 'mno', password: 'pqr', database: 'mysqlDB' });
+var mongoDB = new DatabaseConnection();
+mongoDB.Connect({ url: 'any URL' });
