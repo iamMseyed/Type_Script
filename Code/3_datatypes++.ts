@@ -14,6 +14,9 @@ var exponent:number= 2e3; //2*((10)^3);
 //to convert string to number we use parseInt()
 //to convert string to float we use parstFloat()
 
+//example of type interferance
+var num = 10; //though we didn't use datatype here, this will be set to number by default as 10 is a number
+
 
 //STRING TYPE:
 
@@ -92,13 +95,14 @@ var price = multipleValues[2];
 var[ID, BRAND, PRICE] = multipleValues; //take values directly called Array de-structing
 
 var collection:any[] =[1, 'this',[1,2,3],function(){console.log("Hello")}];
+
 console.log("for in will print index");
-for(var elementIn in collection){
+for(var elementIn in collection){  //index
     console.log(elementIn);
 }
 
-console.log("for of will print values");
-for(var elementOf of collection){
+console.log("for of will print values"); //value
+for(var elementOf of collection){ 
     console.log(elementOf);
 }
 
@@ -216,3 +220,11 @@ function retVal(username:string):string{
     return `Hi ${username}`;
 }
 console.log(retVal(`anyName`));
+
+//Tupple
+    //Similar to array, used to store different type of value based on declaration
+
+let tup:[number,string,number]= [1,'Jan',2000];
+for(var tupVal in tup){
+    document.write(tupVal);
+}

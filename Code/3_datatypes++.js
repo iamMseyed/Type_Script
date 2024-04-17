@@ -1,5 +1,5 @@
-var _a;
 //NUMBER TYPE:
+var _a;
 //primitive type [fixed range]
 var signedInt = -45;
 var unsignedInt = 45;
@@ -12,6 +12,8 @@ var exponent = 2e3; //2*((10)^3);
 //to check if number is in number format we use isNaN()
 //to convert string to number we use parseInt()
 //to convert string to float we use parstFloat()
+//example of type interferance
+var num = 10; //though we didn't use datatype here, this will be set to number by default as 10 is a number
 //STRING TYPE:
 var s1 = 'String 1';
 var s2 = "String 2";
@@ -161,3 +163,9 @@ function retVal(username) {
     return "Hi ".concat(username);
 }
 console.log(retVal("anyName"));
+//Tupple
+//Similar to array, used to store different type of value based on declaration
+var tup = [1, 'Jan', 2000];
+for (var tupVal in tup) {
+    document.write(tupVal);
+}
