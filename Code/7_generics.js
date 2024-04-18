@@ -21,3 +21,20 @@ var json = {
     isActive: true
 };
 genericTypeObj.genericMethod(json);
+var StudentInfo = /** @class */ (function () {
+    function StudentInfo(_studentId, _studentName) {
+        this._studentId = _studentId;
+        this._studentName = _studentName;
+    }
+    StudentInfo.prototype.display = function () {
+        document.write("\n            Student with Id as ".concat(typeof (this._studentId), " and Name as ").concat(typeof (this._studentName), ", \n            details ").concat(StudentInfo.a++, "  are:\n            Student Id: ").concat(this._studentId, ",\n            Student Name: ").concat(this._studentName, "\n            </br>\n            "));
+    };
+    StudentInfo.a = 1;
+    return StudentInfo;
+}());
+var stuInfoObj = new StudentInfo(1, 'AnyName');
+stuInfoObj.display();
+var studInf = new StudentInfo('123ABC', 'anyName123');
+studInf.display();
+var stIn = new StudentInfo(false, 1);
+stIn.display();
